@@ -85,7 +85,7 @@ public class CassandraCQLClient extends DB {
     @Override
     public void init() throws DBException {
 
-        try (InputStream inputStream = getClass().getResourceAsStream("cassandra.properties")) {
+        try (InputStream inputStream = CassandraCQLClient.class.getClassLoader().getResourceAsStream("cassandra.properties")) {
             getProperties().load(inputStream);
         } catch (Exception e) {
             throw new DBException("Not able to load cassandra.properties", e);
