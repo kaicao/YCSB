@@ -134,7 +134,7 @@ public class CassandraCQLClient extends DB {
                 }
 
                 //Update number of connections based on threads
-                int threadcount = Integer.parseInt(getProperties().getProperty("threadcount","1"));
+                int threadcount = Integer.parseInt(getProperties().getProperty("threadcount","8"));
                 cluster.getConfiguration().getPoolingOptions().setMaxConnectionsPerHost(HostDistance.LOCAL, threadcount);
 
                 //Set connection timeout 3min (default is 5s)
