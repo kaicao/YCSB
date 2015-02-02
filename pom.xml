@@ -63,20 +63,26 @@
     <!--module>build-tools</module-->
     <module>cassandra</module>
     <module>core</module>
+      <!--
     <module>hbase</module>
     <module>hypertable</module>
     <module>dynamodb</module>
     <module>elasticsearch</module>
+    -->
     <!--<module>gemfire</module>-->
     <!--<module>infinispan</module>-->
+      <!--
     <module>jdbc</module>
     <module>mapkeeper</module>
     <module>mongodb</module>
     <module>orientdb</module>
+    -->
     <!--module>nosqldb</module-->
+      <!--
     <module>redis</module>
     <module>voldemort</module>
     <module>distribution</module>
+    -->
   </modules>
 
   <build>
@@ -86,8 +92,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.3.2</version>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
+          <source>1.7</source>
+          <target>1.7</target>
         </configuration>
       </plugin>
       <plugin>

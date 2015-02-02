@@ -22,12 +22,11 @@ import com.datastax.driver.core.querybuilder.Insert;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.datastax.driver.core.querybuilder.Select;
 import com.yahoo.ycsb.*;
+
+import java.io.InputStream;
 import java.nio.ByteBuffer;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.HashMap;
-import java.util.Vector;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
@@ -86,6 +85,12 @@ public class CassandraCQLClient extends DB {
     @Override
     public void init() throws DBException {
 
+        try (InputStream inputStream = getClass().getResourceAsStream("cassandra.properties")) {
+            getProperties().load(inputStream);
+        } catch (Exception e) {
+            throw new DBException("Not able to load cassandra.properties", e);
+        }
+
         //Keep track of number of calls to init (for later cleanup)
         initCount.incrementAndGet();
 
@@ -99,7 +104,6 @@ public class CassandraCQLClient extends DB {
             }
 
             try {
-
                 _debug = Boolean.parseBoolean(getProperties().getProperty("debug", "false"));
 
                 String host = getProperties().getProperty("host");
